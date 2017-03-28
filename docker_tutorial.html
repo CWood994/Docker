@@ -8,8 +8,84 @@
             <p>by Connor, Joe, Michael, Zhiyue</p>
             <h2>Introduction to Docker</h2>
                 <div></div>
-            <h2>Installation and Usage</p>
-                <div></div>
+                <h2>Installation and Usage</h2>
+                    <div>
+                        <h3>Docker Variants</h3>
+                        <ul>
+                          <li>Docker Enterprise Edition(Docker EE)</li>
+                            <p>Docker EE is mostly used for enterprise as well as IT teams to run business applications at scale. It is integrated, certified and supported to fully satisfy the business needs of security and modernization. For more information see <a href="https://www.docker.com/enterprise-edition/">Docker Enterprise Edition</a>.</p>
+                          <li>Docker Community Edition(Docker CE)</li>
+                            <p>Docker CE is designed for developers and small teams to get started with Docker and try out different container-based applications. It is available on many platforms such as MacOS, Windows and Linux. Docker gives two options for community edition. Stage builds are released once per quarter. Edge builds are released once per month. For more information see <a href="https://www.docker.com/community-edition/">Docker Community Edition</a>.</p>
+                        </ul>
+                        <h3>Install Docker and run hello-world</h3>
+                          <ol>
+                            <li>Step 1: Get Docker</li>
+                              <p><a href="https://download.docker.com/mac/stable/Docker.dmg">Docker for Mac</a>
+                              </p>
+                              <p><a href="https://download.docker.com/win/stable/InstallDocker.msi">Docker for Windows</a>
+                              </p>
+                              <p>For instructions to install Docker on various Linux distributions, see <a href="https://docs.docker.com/engine/installation/">here</a>.
+                              </p>
+                            <li>Step 2: Install Docker</li>
+                              <p>Install Docker on Mac</p>
+                              <ol>
+                                <li>Double-click Docker.dmg to open the installer, then drag Moby the whale to the Applications folder.
+                                </li>
+                                <li>Double-click Docker.app to start Docker.
+                                </li>
+                                <li>Click the whale to get Preferences and other options.
+                                </li>
+                                <li>Select About Docker to verify that you have the latest version.
+                                </li>
+                                <li>Open a command-line terminal, type docker run hello-world to test pulling an image from Docker Hub and starting a container.</br>
+                                  docker run hello-world
+                                </li>
+                              </ol>
+                              <p>Install Docker for Windows</p>
+                              <ol>
+                                <li>Double-click InstallDocker.msi to run the installer.
+                                </li>
+                                <li>Follow the install wizard to accept the license, authorize the installer, and proceed with the install.
+                                </li>
+                                <li>Click Finish on the setup complete dialog to launch Docker.
+                                </li>
+                                <li>Run docker run hello-world to test pulling an image from Docker Hub and starting a container.</br>
+                                  docker run hello-world
+                                </li>
+                              </ol>
+                              <p>Install Docker CE using the repository for Ubuntu</p>
+                              <ol>
+                                <li>Install packages to allow apt to use a repository over HTTPS:</br>
+                                  sudo apt-get install \</br>
+                                  apt-transport-https \</br>
+                                  ca-certificates \</br>
+                                  curl \</br>
+                                  software-properties-common
+                                </li>
+                                <li>Add Docker's official GPG key:</br>
+                                  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+                                </li>
+                                <li>Use the following command to set up the stable repository. You always need the stable repository, even if you want to install edge builds as well.</br> sudo add-apt-repository \</br>
+                                  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \</br>
+                                  $(lsb_release -cs) \</br>
+                                  stable"
+                                </li>
+                                <li>Update the apt package index.</br>
+                                  sudo apt-get update
+                                </li>
+                                <li>Install the latest version of Docker, or go to the next step to install a specific version. Any existing installation of Docker is replaced.</br>
+                                  sudo apt-get install docker-ce
+                                </li>
+                                <li>On production systems, you should install a specific version of Docker instead of always using the latest. This output is truncated. List the available versions. For Docker EE customers, use docker-ee where you see docker-ce.</br>
+                                  sudo apt-get install docker-ce=[VERSION]
+                                </li>
+                                <li>Verify that Docker CE or Docker EE is installed correctly by running the hello-world image.</br>
+                                  sudo docker run hello-world
+                                </li>
+                              </ol>
+                              <p>For more information, see <a href="https://docs.docker.com/engine/installation/linux/ubuntu/">Get Docker for Ubuntu</a>
+                              </p>
+                    </div>
             <h2>Starting Up a Server and Uploading a Website</h2>
                 <div></div>
             <h2>Using Docker for Development Environment</h2>
