@@ -7,7 +7,38 @@
         <h1>Docker Tutorial</h1>
             <p>by Connor, Joe, Michael, Zhiyue</p>
             <h2>Introduction to Docker</h2>
-                <div></div>
+                <div>
+                    <p>Docker was released in 2013 by dotCloud. The project was quickly open-sourced and made available on GitHub. The popularity of Docker skyrocketed and within a year nearly everyone in the industry had heard of it, but many were still unsure what it was exactly, and why people were so excited about.</p>
+                    <h2>What is Docker?</h2> 
+                    <p>Docker is the world’s leading software container platform. Docker is a tool that allows you to encapsulated computer environments. Each encapsulated computer environment has its own running copy of Linux and is called a container. Containers wrap up your software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything that you can install on a server. This guarantees that your software will always run the same, regardless of the environment it is running in.</p> 
+                    <p>Docker is not a container, nor did it invent containers. Docker simply interacts with your operating system and uses the resource isolation features of the Linux kernel such as cgroups, kernel namespaces, and chroot to create containers using your system. Each container shares the host computer's copy of the kernel. This means there's no hypervisor, and no extended bootup. Initializing a Docker container is lightweight and super fast. Features of Docker include:</p> 
+                    <ul>
+                        <li>Isolating an application's dependencies</li>
+                        <li>Duplicating an application image</li>
+                        <li>Creating ready to run applications that are easily distributable</li>
+                        <li>Allowing easy and fast scalation</li>
+                        <li>Sandbox testing of applications</li>
+                    </ul>
+                    <img src = "pictures/dockerContainer.png" />
+                    <h2>Why Docker?</h2>
+                    <p>There are many reasons to use Docker. Developers use Docker to eliminate the “works on my computer” problems when collaborating with co-workers. Users can use Docker to run multiple applications at once in isolated containers to get better performance. Companies use Docker for software delivery pipelines to ship new features faster, more securely and without concern for environment. The benefits of Docker include:</p>
+                    <ul>
+                        <li>Extremely easy to use</li>
+                        <li>Inexpensive</li>
+                        <li>Low CPU/memory overhead</li>
+                        <li>Fast boot/shutdown</li>
+                        <li>Cross cloud infrastructure</li>
+                    </ul>
+                    <h2>Vagrant (VMs) vs Docker</h2>
+                    <p>Before Docker, the best way to ship an application reliably was with virtual machines. Vagrant was used to build and maintain the VMs so that they were all in sync. The problem with VMs are that they ship too much, they package lot of information which is not required like the hard drive, virtual processors, and network interfaces. They also are slow to start and consume a significant amount of memory and CPU. Docker serves as a VM, but with a faster startup and with less resource consumption.</p>
+                    <img src = "pictures/dockerMemory.png" />
+                    <h2>Terminology</h2>
+                    <p>Docker Containers<br/>&ensp; Actual runtime instance of applications and includes a Docker image, execution environment, and a standard set of instructions<br/><br/>Docker Images<br/>&ensp;Ready-only templates that help launch Docker containers.<br/><br/>DockerFile<br/>&ensp;Text document that contains all the commands you would normally execute manually in order to build a Docker image. Docker can build images automatically by reading the instructions from a Dockerfile.<br/><br/>Docker Client<br/>&ensp;User interface that allows communication between the user and the Docker daemon.<br/><br/>Docker Daemon<br/>&ensp;Sits on the host machine answering requests for services.<br/><br/>Docker Hub<br/>&ensp;Centralized resource for working with Docker and its components. It provides the following services:<br/>&ensp;&ensp;Docker image hosting<br/>&ensp;&ensp;User authentication<br/>&ensp;&ensp;Automated image builds and work-flow tools such as build triggers and web hooks<br/>&ensp;&ensp;Integration with GitHub and Bitbucket</p>
+                    <p>Below is an image showing some of the docker commands and how they relate to the components of Docker</p>
+                    <img src = "pictures/dockerDiagramCW.png" />
+                    <p>Below is a diagam showing how Docker can work (Windows/Mac OS pc). Notice the Dockerfile is part of the source code that then goes to build the Docker Image running on boot2docker, which is a lightweight Linux distribution made specifically to run Docker containers. This image can then run the container locally or be pushed to the Docker Hub. This remote image can then be ran on a server or ran many times as a swarm.</p>
+                    <img src = "pictures/dockerDiagramCW2.png" />
+                </div>
                 <h2>Installation and Usage</h2>
                     <div>
                         <h3>Docker Variants</h3>
