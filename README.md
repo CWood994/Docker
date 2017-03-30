@@ -6,5 +6,5 @@ by Connor
 by Zhiyue
 ## Starting up a server and uploading a website
 by Joe
-## Using docker for developer environment
+## Using Docker in your developer environment
 by Michael

@@ -1,179 +1,282 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Docker Tutorial</title>
-    </head>
-    <body>
-        <h1>Docker Tutorial</h1>
-            <img src = "pictures/dockerWhale.png" />
-            <p>by Connor, Joe, Michael, Zhiyue</p>
-            <h2>Introduction to Docker</h2>
-                <div>
-                    <p>Docker was released in 2013 by dotCloud. The project was quickly open-sourced and made available on GitHub. The popularity of Docker skyrocketed and within a year nearly everyone in the industry had heard of it, but many were still unsure what it was exactly, and why people were so excited about.</p>
-                    <h2>What is Docker?</h2>
-                    <p>Docker is the world’s leading software container platform. Docker is a tool that allows you to encapsulated computer environments. Each encapsulated computer environment has its own running copy of Linux and is called a container. Containers wrap up your software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything that you can install on a server. This guarantees that your software will always run the same, regardless of the environment it is running in.</p>
-                    <p>Docker is not a container, nor did it invent containers. Docker simply interacts with your operating system and uses the resource isolation features of the Linux kernel such as cgroups, kernel namespaces, and chroot to create containers using your system. Each container shares the host computer's copy of the kernel. This means there's no hypervisor, and no extended bootup. Initializing a Docker container is lightweight and super fast. Features of Docker include:</p>
-                    <ul>
-                        <li>Isolating an application's dependencies</li>
-                        <li>Duplicating an application image</li>
-                        <li>Creating ready to run applications that are easily distributable</li>
-                        <li>Allowing easy and fast scalation</li>
-                        <li>Sandbox testing of applications</li>
-                    </ul>
-                    <img src = "pictures/dockerContainer.png" />
-                    <h2>Why Docker?</h2>
-                    <p>There are many reasons to use Docker. Developers use Docker to eliminate the “works on my computer” problems when collaborating with co-workers. Users can use Docker to run multiple applications at once in isolated containers to get better performance. Companies use Docker for software delivery pipelines to ship new features faster, more securely and without concern for environment. The benefits of Docker include:</p>
-                    <ul>
-                        <li>Extremely easy to use</li>
-                        <li>Inexpensive</li>
-                        <li>Low CPU/memory overhead</li>
-                        <li>Fast boot/shutdown</li>
-                        <li>Cross cloud infrastructure</li>
-                    </ul>
-                    <h2>Vagrant (VMs) vs Docker</h2>
-                    <p>Before Docker, the best way to ship an application reliably was with virtual machines. Vagrant was used to build and maintain the VMs so that they were all in sync. The problem with VMs are that they ship too much, they package lot of information which is not required like the hard drive, virtual processors, and network interfaces. They also are slow to start and consume a significant amount of memory and CPU. Docker serves as a VM, but with a faster startup and with less resource consumption.</p>
-                    <img src = "pictures/dockerMemory.png" />
-                    <h2>Terminology</h2>
-                    <p>Docker Containers<br/>&ensp; Actual runtime instance of applications and includes a Docker image, execution environment, and a standard set of instructions<br/><br/>Docker Images<br/>&ensp;Ready-only templates that help launch Docker containers.<br/><br/>DockerFile<br/>&ensp;Text document that contains all the commands you would normally execute manually in order to build a Docker image. Docker can build images automatically by reading the instructions from a Dockerfile.<br/><br/>Docker Client<br/>&ensp;User interface that allows communication between the user and the Docker daemon.<br/><br/>Docker Daemon<br/>&ensp;Sits on the host machine answering requests for services.<br/><br/>Docker Hub<br/>&ensp;Centralized resource for working with Docker and its components. It provides the following services:<br/>&ensp;&ensp;Docker image hosting<br/>&ensp;&ensp;User authentication<br/>&ensp;&ensp;Automated image builds and work-flow tools such as build triggers and web hooks<br/>&ensp;&ensp;Integration with GitHub and Bitbucket</p>
-                    <p>Below is an image showing some of the docker commands and how they relate to the components of Docker</p>
-                    <img src = "pictures/dockerDiagramCW.png" height="600" />
-                    <p>Below is a diagam showing how Docker can work (Windows/Mac OS pc). Notice the Dockerfile is part of the source code that then goes to build the Docker Image running on boot2docker, which is a lightweight Linux distribution made specifically to run Docker containers. This image can then run the container locally or be pushed to the Docker Hub. This remote image can then be ran on a server or ran many times as a swarm.</p>
-                    <img src = "pictures/dockerDiagramCW2.png" height="720"/>
-                </div>
-                <h2>Installation and Basic Usage</h2>
-                    <div>
-                        <h3>Docker Variants</h3>
-                        <ul>
-                          <li>Docker Enterprise Edition(Docker EE)</li>
-                            <p>Docker EE is mostly used for enterprise as well as IT teams to run business applications at scale. It is integrated, certified and supported to fully satisfy the business needs of security and modernization. For more information see <a href="https://www.docker.com/enterprise-edition/">Docker Enterprise Edition</a>.</p>
-                          <li>Docker Community Edition(Docker CE)</li>
-                            <p>Docker CE is designed for developers and small teams to get started with Docker and try out different container-based applications. It is available on many platforms such as MacOS, Windows and Linux. Docker gives two options for community edition. Stable builds are released once per quarter. Edge builds are released once per month. For more information see <a href="https://www.docker.com/community-edition/">Docker Community Edition</a>.</p>
-                        </ul>
-                        <h3>Install Docker and run hello-world</h3>
-                          <ol>
-                            <li>Step 1: Get Docker</li>
-                              <p><a href="https://download.docker.com/mac/stable/Docker.dmg">Docker for Mac</a>
-                              </p>
-                              <p><a href="https://download.docker.com/win/stable/InstallDocker.msi">Docker for Windows</a>
-                              </p>
-                              <p>For instructions to install Docker on various Linux distributions, see <a href="https://docs.docker.com/engine/installation/">here</a>.
-                              </p>
-                              <p>For instructions on how to install Docker toolbox, see <a href="https://docs.docker.com/toolbox/overview/">here</a>. Note Docker toolbox is only needed for older versions of Mac and Windows that do not meet requirements for installing Docker.
-                              </p>
-                            <li>Step 2: Install Docker</li>
-                              <p>Install Docker on Mac</p>
-                              <ol>
-                                <li>Double-click Docker.dmg to open the installer, then drag Moby the whale to the Applications folder.</br>
-                                  <img src="pictures/docker-app-drag.png">
-                                </li>
-                                <li>Double-click Docker.app to start Docker.</br>
-                                  <img src="pictures/docker-app-in-apps.png">
-                                </li>
-                                <li>Click the whale to get Preferences and other options.</br>
-                                  <img src="pictures/menu.png">
-                                </li>
-                                <li>Select About Docker to verify that you have the latest version.
-                                </li>
-                                <li>Open a command-line terminal, type docker run hello-world to test pulling an image from Docker Hub and starting a container.</br>
-                                  <img src="pictures/docker-hello-world-mac.png"></br>
-                                </li>
-                                <li>For more examples and helpful commands, see <a href="https://docs.docker.com/docker-for-mac/#explore-the-application-and-run-examples">here</a>.
-                              </ol>
-                              <p>Install Docker for Windows</p>
-                              <ol>
-                                <li>Double-click InstallDocker.msi to run the installer.
-                                </li>
-                                <li>Follow the install wizard to accept the license, authorize the installer, and proceed with the install.
-                                </li>
-                                <li>Click Finish on the setup complete dialog to launch Docker.</br>
-                                  <img src="pictures/installer-finishes.png">
-                                </li>
-                                <li>Run some Docker commands, such as docker ps, docker version, and docker info.
-                                </li>
-                                <li>Run docker run hello-world to test pulling an image from Docker Hub and starting a container.</br>
-                                  <img src="pictures/docker-hello-world-Windows.png"></br>
-                                  docker run hello-world
-                                </li>
-                                <li>You can even try something ambitious and run an Ubuntu container using this command.</br>
-                                  docker run -it ubuntu bash
-                                </li>
-                              </ol>
-                              <p>Install Docker CE using the repository for Ubuntu</p>
-                              <ol>
-                                <li>Install packages to allow apt to use a repository over HTTPS:</br>
-                                  <img src="pictures/apt-install-on-ubuntu.png">
-                                </li>
-                                <li>Add Docker's official GPG key:</br>
-                                  <img src="pictures/gpg-key.png">
-                                </li>
-                                <li>Use the following command to set up the stable repository. You always need the stable repository, even if you want to install edge builds as well.</br>
-                                  <img src="pictures/repository.png">
-                                </li>
-                                <li>Update the apt package index.</br>
-                                  <img src="pictures/update-repository.png">
-                                </li>
-                                <li>Install the latest version of Docker, or go to the next step to install a specific version. Any existing installation of Docker is replaced.</br>
-                                  <img src="pictures/install-docker-ubuntu.png">
-                                </li>
-                                <li>On production systems, you should install a specific version of Docker instead of always using the latest. This output is truncated. List the available versions. For Docker EE customers, use docker-ee where you see docker-ce.</br>
-                                  <img src="pictures/install-version.png">
-                                </li>
-                                <li>Verify that Docker CE or Docker EE is installed correctly by running the hello-world image.</br>
-                                  <img src="pictures/run-hello-world-ubuntu.png">
-                                </li>
-                              </ol>
-                              <p>Alternatively, you can install docker <a href="https://docs.docker.com/engine/getstarted/linux_install_help/"> using a shell script </a>.
-                              </p>
-                              <p>For more information on installing docker for Ubuntu, see <a href="https://docs.docker.com/engine/installation/linux/ubuntu/">Get Docker for Ubuntu</a>
-                              </p>
-                            <li>Verify installation</li>
-                              <ol>
-                                <li>Open a command-line terminal, and run some Docker commands to verify that Docker is working as expected. Some good commands to try are docker version to check that you have the latest release installed and docker ps to see if you have any running containers.
-                                </li>
-                                <li>Type the docker run hello-world command and press RETURN.</br>The command does some work for you, if everything runs well, the command's output looks like this:</br>
-                                  <img src="pictures/hello-world.png">
-                                </li>
-                                <li>Run docker ps -a to show all containers on the system.</br>
-                                  <img src="pictures/ps.png">
-                                </li>
-                              </ol>
-                    </div>
-            <h2>Linking Containers</h2>
-                <div>
-                  <h3> Example commands using hellodocker project </h3>
+<head>
+    <title>Docker Tutorial</title>
+</head>
+<body>
+<h1>Docker Tutorial</h1>
+<img src="pictures/dockerWhale.png"/>
+<p>by Connor, Joe, Michael, Zhiyue</p>
+<h2>Introduction to Docker</h2>
+<div>
+    <p>Docker was released in 2013 by dotCloud. The project was quickly open-sourced and made available on GitHub. The
+        popularity of Docker skyrocketed and within a year nearly everyone in the industry had heard of it, but many
+        were still unsure what it was exactly, and why people were so excited about.</p>
+    <h2>What is Docker?</h2>
+    <p>Docker is the world’s leading software container platform. Docker is a tool that allows you to encapsulated
+        computer environments. Each encapsulated computer environment has its own running copy of Linux and is called a
+        container. Containers wrap up your software in a complete filesystem that contains everything it needs to run:
+        code, runtime, system tools, system libraries – anything that you can install on a server. This guarantees that
+        your software will always run the same, regardless of the environment it is running in.</p>
+    <p>Docker is not a container, nor did it invent containers. Docker simply interacts with your operating system and
+        uses the resource isolation features of the Linux kernel such as cgroups, kernel namespaces, and chroot to
+        create containers using your system. Each container shares the host computer's copy of the kernel. This means
+        there's no hypervisor, and no extended bootup. Initializing a Docker container is lightweight and super fast.
+        Features of Docker include:</p>
+    <ul>
+        <li>Isolating an application's dependencies</li>
+        <li>Duplicating an application image</li>
+        <li>Creating ready to run applications that are easily distributable</li>
+        <li>Allowing easy and fast scalation</li>
+        <li>Sandbox testing of applications</li>
+    </ul>
+    <img src="pictures/dockerContainer.png"/>
+    <h2>Why Docker?</h2>
+    <p>There are many reasons to use Docker. Developers use Docker to eliminate the “works on my computer” problems when
+        collaborating with co-workers. Users can use Docker to run multiple applications at once in isolated containers
+        to get better performance. Companies use Docker for software delivery pipelines to ship new features faster,
+        more securely and without concern for environment. The benefits of Docker include:</p>
+    <ul>
+        <li>Extremely easy to use</li>
+        <li>Inexpensive</li>
+        <li>Low CPU/memory overhead</li>
+        <li>Fast boot/shutdown</li>
+        <li>Cross cloud infrastructure</li>
+    </ul>
+    <h2>Vagrant (VMs) vs Docker</h2>
+    <p>Before Docker, the best way to ship an application reliably was with virtual machines. Vagrant was used to build
+        and maintain the VMs so that they were all in sync. The problem with VMs are that they ship too much, they
+        package lot of information which is not required like the hard drive, virtual processors, and network
+        interfaces. They also are slow to start and consume a significant amount of memory and CPU. Docker serves as a
+        VM, but with a faster startup and with less resource consumption.</p>
+    <img src="pictures/dockerMemory.png"/>
+    <h2>Terminology</h2>
+    <p>Docker Containers<br/>&ensp; Actual runtime instance of applications and includes a Docker image, execution
+        environment, and a standard set of instructions<br/><br/>Docker Images<br/>&ensp;Ready-only templates that help
+        launch Docker containers.<br/><br/>DockerFile<br/>&ensp;Text document that contains all the commands you would
+        normally execute manually in order to build a Docker image. Docker can build images automatically by reading the
+        instructions from a Dockerfile.<br/><br/>Docker Client<br/>&ensp;User interface that allows communication
+        between the user and the Docker daemon.<br/><br/>Docker Daemon<br/>&ensp;Sits on the host machine answering
+        requests for services.<br/><br/>Docker Hub<br/>&ensp;Centralized resource for working with Docker and its
+        components. It provides the following services:<br/>&ensp;&ensp;Docker image hosting<br/>&ensp;&ensp;User
+        authentication<br/>&ensp;&ensp;Automated image builds and work-flow tools such as build triggers and web
+        hooks<br/>&ensp;&ensp;Integration with GitHub and Bitbucket</p>
+    <p>Below is an image showing some of the docker commands and how they relate to the components of Docker</p>
+    <img src="pictures/dockerDiagramCW.png" height="600"/>
+    <p>Below is a diagam showing how Docker can work (Windows/Mac OS pc). Notice the Dockerfile is part of the source
+        code that then goes to build the Docker Image running on boot2docker, which is a lightweight Linux distribution
+        made specifically to run Docker containers. This image can then run the container locally or be pushed to the
+        Docker Hub. This remote image can then be ran on a server or ran many times as a swarm.</p>
+    <img src="pictures/dockerDiagramCW2.png" height="720"/>
+</div>
+<h2>Installation and Basic Usage</h2>
+<div>
+    <h3>Docker Variants</h3>
+    <ul>
+        <li>Docker Enterprise Edition(Docker EE)</li>
+        <p>Docker EE is mostly used for enterprise as well as IT teams to run business applications at scale. It is
+            integrated, certified and supported to fully satisfy the business needs of security and modernization. For
+            more information see <a href="https://www.docker.com/enterprise-edition/">Docker Enterprise Edition</a>.</p>
+        <li>Docker Community Edition(Docker CE)</li>
+        <p>Docker CE is designed for developers and small teams to get started with Docker and try out different
+            container-based applications. It is available on many platforms such as MacOS, Windows and Linux. Docker
+            gives two options for community edition. Stable builds are released once per quarter. Edge builds are
+            released once per month. For more information see <a href="https://www.docker.com/community-edition/">Docker
+                Community Edition</a>.</p>
+    </ul>
+    <h3>Install Docker and run hello-world</h3>
+    <ol>
+        <li>Step 1: Get Docker</li>
+        <p><a href="https://download.docker.com/mac/stable/Docker.dmg">Docker for Mac</a>
+        </p>
+        <p><a href="https://download.docker.com/win/stable/InstallDocker.msi">Docker for Windows</a>
+        </p>
+        <p>For instructions to install Docker on various Linux distributions, see <a
+                href="https://docs.docker.com/engine/installation/">here</a>.
+        </p>
+        <p>For instructions on how to install Docker toolbox, see <a href="https://docs.docker.com/toolbox/overview/">here</a>.
+            Note Docker toolbox is only needed for older versions of Mac and Windows that do not meet requirements for
+            installing Docker.
+        </p>
+        <li>Step 2: Install Docker</li>
+        <p>Install Docker on Mac</p>
+        <ol>
+            <li>Double-click Docker.dmg to open the installer, then drag Moby the whale to the Applications folder.</br>
+                <img src="pictures/docker-app-drag.png">
+            </li>
+            <li>Double-click Docker.app to start Docker.</br>
+                <img src="pictures/docker-app-in-apps.png">
+            </li>
+            <li>Click the whale to get Preferences and other options.</br>
+                <img src="pictures/menu.png">
+            </li>
+            <li>Select About Docker to verify that you have the latest version.
+            </li>
+            <li>Open a command-line terminal, type docker run hello-world to test pulling an image from Docker Hub and
+                starting a container.</br>
+                <img src="pictures/docker-hello-world-mac.png"></br>
+            </li>
+            <li>For more examples and helpful commands, see <a
+                    href="https://docs.docker.com/docker-for-mac/#explore-the-application-and-run-examples">here</a>.
+        </ol>
+        <p>Install Docker for Windows</p>
+        <ol>
+            <li>Double-click InstallDocker.msi to run the installer.
+            </li>
+            <li>Follow the install wizard to accept the license, authorize the installer, and proceed with the install.
+            </li>
+            <li>Click Finish on the setup complete dialog to launch Docker.</br>
+                <img src="pictures/installer-finishes.png">
+            </li>
+            <li>Run some Docker commands, such as docker ps, docker version, and docker info.
+            </li>
+            <li>Run docker run hello-world to test pulling an image from Docker Hub and starting a container.</br>
+                <img src="pictures/docker-hello-world-Windows.png"></br>
+                docker run hello-world
+            </li>
+            <li>You can even try something ambitious and run an Ubuntu container using this command.</br>
+                docker run -it ubuntu bash
+            </li>
+        </ol>
+        <p>Install Docker CE using the repository for Ubuntu</p>
+        <ol>
+            <li>Install packages to allow apt to use a repository over HTTPS:</br>
+                <img src="pictures/apt-install-on-ubuntu.png">
+            </li>
+            <li>Add Docker's official GPG key:</br>
+                <img src="pictures/gpg-key.png">
+            </li>
+            <li>Use the following command to set up the stable repository. You always need the stable repository, even
+                if you want to install edge builds as well.</br>
+                <img src="pictures/repository.png">
+            </li>
+            <li>Update the apt package index.</br>
+                <img src="pictures/update-repository.png">
+            </li>
+            <li>Install the latest version of Docker, or go to the next step to install a specific version. Any existing
+                installation of Docker is replaced.</br>
+                <img src="pictures/install-docker-ubuntu.png">
+            </li>
+            <li>On production systems, you should install a specific version of Docker instead of always using the
+                latest. This output is truncated. List the available versions. For Docker EE customers, use docker-ee
+                where you see docker-ce.</br>
+                <img src="pictures/install-version.png">
+            </li>
+            <li>Verify that Docker CE or Docker EE is installed correctly by running the hello-world image.</br>
+                <img src="pictures/run-hello-world-ubuntu.png">
+            </li>
+        </ol>
+        <p>Alternatively, you can install docker <a
+                href="https://docs.docker.com/engine/getstarted/linux_install_help/"> using a shell script </a>.
+        </p>
+        <p>For more information on installing docker for Ubuntu, see <a
+                href="https://docs.docker.com/engine/installation/linux/ubuntu/">Get Docker for Ubuntu</a>
+        </p>
+        <li>Verify installation</li>
+        <ol>
+            <li>Open a command-line terminal, and run some Docker commands to verify that Docker is working as expected.
+                Some good commands to try are docker version to check that you have the latest release installed and
+                docker ps to see if you have any running containers.
+            </li>
+            <li>Type the docker run hello-world command and press RETURN.</br>The command does some work for you, if
+                everything runs well, the command's output looks like this:</br>
+                <img src="pictures/hello-world.png">
+            </li>
+            <li>Run docker ps -a to show all containers on the system.</br>
+                <img src="pictures/ps.png">
+            </li>
+        </ol>
+</div>
+<h2>Using Docker in Your Development Environment</h2>
+<div>
 
-                  <p> NOTE: <a href="https://github.com/variadico/hellodocker/blob/master/docker-compose.yml"> hellodocker project </a> </p>
+    <h3>Consistent Developer Experience</h3>
 
-                  <p> Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose file to configure your application's services. Then, using a single command, you create and start all the services from your configuration. </p>
+    <p> With Docker you can provide a consistent development environments for your entire team. All developers use the
+        same OS, same system libraries same language runtime, no matter what host OS they are using </p>
+    <p>Let's compare the difference between setting up a VM from Ruby on Rails and setting up a Docker container</p>
 
-                  <p> Screenshots of the commands and correct responses necessary to link containers for an application: </p>
+    <a href="http://web.cse.ohio-state.edu/~bucci.2/3901/resources/vm-install.html"> VM Instructions </a>
+    <br>
+    <h4>Dockerfile</h4>
+    <img src="pictures/Rails.PNG"/>
+    <br>
+    <h4>Build, Test, Run</h4>
+    <img src="pictures/RailsRun.PNG"/>
+    <p>The application is up and running and accessible from our machine. But, each time we make a change, we need to
+        build a new container.</p>
 
-                  <img src = "pictures/gitCloneDocker.PNG" />
-                  <p> This clones the open github repository with 4 containers: </p>
-                  <ul>
-                    <li>1 data-only container. This is where Postgres' data will live.</li>
-                    <li>1 Postgres container.</li>
-                    <li>1 Go container. This container will house the Go app.</li>
-                    <li>1 Nginx container. This will be used as a reverse proxy between Go and the
-                    web.</li>
-                  </ul>
-                  <img src = "pictures/curlDockerCompose.PNG" />
-                  <p>Downloads docker-compose</p>
-                  <img src = "pictures/chmodBuildDockerCompose.PNG" />
-                  <p> "chmod ..." command applies executable permissions to the binary file</p>
-                  <p> "docker-compose build" command uses the docker-compose.yml file to connect each container </p>
-                  <img src = "pictures/dockerComposeUp.PNG" />
-                  <p> This command starts and runs the entire application
-                  <img src = "pictures/localhost-Docker.PNG" />
-                  <p> A screenshot of the web server running on localhost port 8080 </p>
-                </div>
-                <div>
-                  <h3> Example yml File </h3>
-                  <img src = "pictures/ymlFileWithComments.PNG" />
-                </div>
+    <p> Rebuilding the container may be fine for a production environment where code changes are not frequent. But in a
+        developer environment there needs to be a more rapid way. </p>
 
 
-            <h2>Using Docker for Development Environment</h2>
-                <div></div>
-    </body>
+    <h4>Volumes: </h4>
+    <p>These are mount points which let you access data from either the native host or another container. In
+        our case, we can mount the local application folder into the container and don’t need to build a new image for
+        each change.</p>
+
+    <img src="pictures/RailsVolume.PNG"/>
+
+    <h3>Testing made simple</h3>
+    <p>Testing software under multiple versions of ruby could be easily be done by changing the version number on line 1
+        above</p>
+
+    <h3>Simple to make temporary environments</h3>
+    <p>Have you ever come across software that you want to try, but dont want to install the 100 dependencies and
+        configurations? </p>
+    <p>Scared of trying some odd looking bash command on some website?</p>
+    <p>Think there may be some malicious code hidden?</p>
+
+    <h4>Make a temporary docker container to run the script!</h4>
+    <p>If your script is called test.py, go to the directory of your script and run</p>
+    <code>docker run -it -v `pwd`:/app python:2 python /app/test.py</code>
+    <br>
+    <a href="play-with-docker.com"> Play with Docker! </a>
+    <br>
+    <a href=" https://hub.docker.com/r/library/python/"> Python DockerHub </a>
+    <br>
+
+
+
+</div>
+<h2>Linking Containers</h2>
+<div>
+    <h3> Example commands using hellodocker project </h3>
+
+    <p> NOTE: <a href="https://github.com/variadico/hellodocker/blob/master/docker-compose.yml"> hellodocker
+        project </a></p>
+
+    <p> Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose
+        file to configure your application's services. Then, using a single command, you create and start all the
+        services from your configuration. </p>
+
+    <p> Screenshots of the commands and correct responses necessary to link containers for an application: </p>
+
+    <img src="pictures/gitCloneDocker.PNG"/>
+    <p> This clones the open github repository with 4 containers: </p>
+    <ul>
+        <li>1 data-only container. This is where Postgres' data will live.</li>
+        <li>1 Postgres container.</li>
+        <li>1 Go container. This container will house the Go app.</li>
+        <li>1 Nginx container. This will be used as a reverse proxy between Go and the
+            web.
+        </li>
+    </ul>
+    <img src="pictures/curlDockerCompose.PNG"/>
+    <p>Downloads docker-compose</p>
+    <img src="pictures/chmodBuildDockerCompose.PNG"/>
+    <p> "chmod ..." command applies executable permissions to the binary file</p>
+    <p> "docker-compose build" command uses the docker-compose.yml file to connect each container </p>
+    <img src="pictures/dockerComposeUp.PNG"/>
+    <p> This command starts and runs the entire application
+        <img src="pictures/localhost-Docker.PNG"/>
+    <p> A screenshot of the web server running on localhost port 8080 </p>
+</div>
+<div>
+    <h3> Example yml File </h3>
+    <img src="pictures/ymlFileWithComments.PNG"/>
+</div>
+
+
+</body>
 </html>
