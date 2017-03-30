@@ -88,12 +88,35 @@
                     </div>
             <h2>Linking Containers</h2>
                 <div>
+                  <h3> Example commands using hellodocker project </h3>
+                  <p> NOTE: <a href="https://github.com/variadico/hellodocker/blob/master/docker-compose.yml"> hellodocker project </a> </p>
+                  <p> Screenshots of the commands and correct responses necessary to link containers for an application: </p>
+
                   <img src = "pictures/gitCloneDocker.PNG" />
+                  <p> This clones the open github repository with 4 containers: </p>
+                  <ul>
+                    <li>1 data-only container. This is where Postgres' data will live.</li>
+                    <li>1 Postgres container.</li>
+                    <li>1 Go container. This container will house the Go app.</li>
+                    <li>1 Nginx container. This will be used as a reverse proxy between Go and the
+                    web.</li>
+                  </ul>
                   <img src = "pictures/curlDockerCompose.PNG" />
+                  <p>Downloads docker-compose</p>
                   <img src = "pictures/chmodBuildDockerCompose.PNG" />
+                  <p> "chmod ..." command applies executable permissions to the binary file</p>
+                  <p> "docker-compose build" command uses the docker-compose.yml file to connect each container </p>
                   <img src = "pictures/dockerComposeUp.PNG" />
+                  <p> This command starts and runs the entire application
                   <img src = "pictures/localhost-Docker.PNG" />
+                  <p> A screenshot of the web server running on localhost port 8080 </p>
                 </div>
+                <div>
+                  <h3> Example yml File </h3>
+                  <img src = "pictures/ymlFileWithComments.PNG" />
+                </div>
+
+
             <h2>Using Docker for Development Environment</h2>
                 <div></div>
     </body>
